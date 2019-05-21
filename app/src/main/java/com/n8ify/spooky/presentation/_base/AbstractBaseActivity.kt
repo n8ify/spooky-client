@@ -4,7 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 
-abstract class BaseAbstractActivity : AppCompatActivity() {
+abstract class AbstractBaseActivity : AppCompatActivity() {
 
 
     override fun onPostCreate(savedInstanceState: Bundle?) {

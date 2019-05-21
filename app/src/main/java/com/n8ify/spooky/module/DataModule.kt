@@ -19,7 +19,7 @@ val dataModule = module {
     single { provideRetrofit().create(SpotAPI::class.java) }
     factory<SpotRepository> { SpotRepositoryImpl(spotAPI = get()) }
     viewModel { MainViewModel(spotRepository = get()) }
-    viewModel { SetupViewModel(spotRepository = get()) }
+    viewModel { SetupViewModel(spotRepository = get(), application = get()) }
 }
 
 fun provideOkHttp() : OkHttpClient {
