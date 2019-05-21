@@ -1,3 +1,46 @@
 <resources>
     <string name="app_name">Spooky</string>
+    <string name="ghost_ready_sentence">ฉันพร้อมแล้ว! แตะที่ฉันเมื่อเธอพร้อม...</string>
+    <string name="ghost_retry_connect_sentence">น่าเศร้า เซิฟเวอร์ไม่ตอบสนองฉันกลับมา... ฉันจะลองอีกครั้ง</string>
+    <string name="ghost_interact_1">ฉันรู้งานนะ!</string>
+    <string name="ghost_interact_2">ตั้งใจหาหน่อยสิ!</string>
+    <string name="ghost_interact_3">ฉันทำงานหนักมาก รู้เปล่า?</string>
+    <string name="ghost_interact_4">เห้!</string>
+    <string name="ghost_interact_5">อย่าแตะมาก มันไร้ประโยชน์</string>
+    <string name="ghost_interact_6">อ่อนหัด! อ่อนหัด! อ่อนหัด! อ่อนหัด! อ่อนหัด! อ่อนหัด!</string>
+    <string name="ghost_interact_7">แตะไปก็ไร้ค่า เด็กน้อย</string>
+    <string name="ghost_interact_8">พอได้แล้ว...</string>
+    <string name="ghost_interact_9">จ่ะ! จ่ะ! จ่ะ!</string>
+    <string name="ghost_interact_10">ถ้าชอบใจก็ทำต่อไป...</string>
+    <string name="ghost_response_lets_go">ไปกันเลย!</string>
+    <string name="ghost_response_give_me_a_time">ขอเวลาแปปนึงนะ...</string>
+    <string name="ghost_response_too_far_from_here">ยังห่างไกลจากตรงนี้อยู่...</string>
+    <string name="ghost_response_become_closer">ใกล้ขึ้นมาหน่อย</string>
+    <string name="ghost_response_just_close_to_it">อ๊ะ! ใกล้แล้ว</string>
+    <string name="ghost_response_must_be_here">ต้องอยู่บริเวณนี้แน่!!</string>
+    <string name="ghost_response_exactly_around_here">แถวนี้หละ!! แถวนี้หละ!!</string>
+    <string name="ghost_response_no_spot">สัมผัสถึงอะไรไม่ได้เลย แถวนี้ไม่มีอะไรแน่นอน</string>
+    <string name="other_far_from_here_for_meters">ห่างไปเพียง (เมตร)</string>
+    <string name="other_no_word">...</string>
+    <string name="other_mode_spot_enabled">SPOT mode is enabled</string>
+    <string name="setting">Setting</string>
+    <string name="setting_tab_registered">รวมพิกัดปัจจุบัน</string>
+    <string name="setting_tab_save">บันทึก</string>
+    <string name="setting_parameter">พารามิเตอร์</string>
+    <string name="setting_coordinate">พิกัด</string>
+    <string name="setting_tale">เรื่องเล่า</string>
+    <string name="setting_description">รายละเอียด</string>
+    <string name="setting_remark">รีมาร์ก</string>
+    <string name="setting_pin">ปัก</string>
+    <string name="setting_pop">นำออกล่าสุด</string>
+    <string name="setting_truncate">ลบทั้งหมด</string>
+    <string name="setting_edit">แก้ไข</string>
+    <string name="setting_confirm">ยืนยัน</string>
+    <string name="setting_cancel">ยกเลิก</string>
+    <string name="status_active">Active</string>
+    <string name="status_unactive">Unactive</string>
+    <string name="status_visited">Visited</string>
+    <string name="status_undefined">Undefined</string>
+
+
 </resources>

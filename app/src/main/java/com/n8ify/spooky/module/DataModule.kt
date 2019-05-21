@@ -1,10 +1,12 @@
 package com.n8ify.spooky.module
 
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
+import com.n8ify.spooky.BuildConfig
 import com.n8ify.spooky.data.api.SpotAPI
 import com.n8ify.spooky.data.repository.SpotRepository
 import com.n8ify.spooky.data.repository.SpotRepositoryImpl
 import com.n8ify.spooky.presentation.main.MainViewModel
+import com.n8ify.spooky.presentation.setup.SetupViewModel
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import org.koin.android.ext.koin.androidContext
@@ -17,6 +19,7 @@ val dataModule = module {
     single { provideRetrofit().create(SpotAPI::class.java) }
     factory<SpotRepository> { SpotRepositoryImpl(spotAPI = get()) }
     viewModel { MainViewModel(spotRepository = get()) }
+    viewModel { SetupViewModel(spotRepository = get()) }
 }
 
 fun provideOkHttp() : OkHttpClient {
@@ -28,7 +31,7 @@ fun provideOkHttp() : OkHttpClient {
 fun provideRetrofit() : Retrofit {
     return Retrofit.Builder()
         .client(provideOkHttp())
-        .baseUrl("https://radiant-shore-70316.herokuapp.com/")
+        .baseUrl(BuildConfig.SPOOKY_BASE_URL)
         .addCallAdapterFactory(CoroutineCallAdapterFactory())
         .addConverterFactory(GsonConverterFactory.create())
         .build()

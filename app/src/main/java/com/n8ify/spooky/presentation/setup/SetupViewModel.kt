@@ -1,4 +1,4 @@
-package com.n8ify.spooky.presentation.main
+package com.n8ify.spooky.presentation.setup
 
 import android.util.Log
 import androidx.lifecycle.AndroidViewModel
@@ -10,29 +10,29 @@ import com.n8ify.spooky.model.spot.Spot
 import kotlinx.coroutines.*
 import kotlin.coroutines.CoroutineContext
 
-class MainViewModel(val spotRepository: SpotRepository) : ViewModel(), CoroutineScope {
+class SetupViewModel(val spotRepository: SpotRepository) : ViewModel(), CoroutineScope {
 
-    val TAG = MainViewModel::class.java.simpleName
+    val TAG = SetupViewModel::class.java.simpleName
 
     // Coroutine's background job
     private val job = Job()
     // Define default thread for Coroutine as Main and add job
     override val coroutineContext: CoroutineContext =  Dispatchers.Main.plus(job)
 
-    val spots = MutableLiveData<List<Spot>>().apply { this.value = mutableListOf() }
+    val spots = MutableLiveData<List<Spot>>()
 
     fun loadSpots(){
         launch {
             val result = withContext(Dispatchers.IO){ spotRepository.getAllSpots() }
-            val any = when (result) {
-                is UseCaseResult.Success -> result.data.forEach { Log.d(TAG, it.toString()) }
+            when (result) {
+                is UseCaseResult.Success -> spots.value = result.data
                 is UseCaseResult.Failure -> Log.e(TAG, "Unexpected Error!", result.e)
             }
         }
     }
 
     fun deleteSpot(index : Int){
-        val deleteSpot = spots.value!![index]
+        val deleteSpot = spots.value?.let { it[index] }
 
     }
 
