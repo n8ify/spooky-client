@@ -43,5 +43,9 @@
     <string name="status_undefined">Undefined</string>
     <string name="warning_message_tale_required">ต้องการเรื่องเล่า</string>
 
-
+    <string-array name="spot_option">
+        <item>แสดงบนแผนที่ Google Map</item>
+        <item>แก้ไข</item>
+        <item>ลบออก</item>
+    </string-array>
 </resources>

@@ -82,4 +82,11 @@ class SaveSpotFragment : AbstractBaseFragment() {
             tv_latlng.text = "${it.latitude}, ${it.longitude}"
         })
     }
+
+    fun editSpot(spot: Spot) {
+        this@SaveSpotFragment.spot = spot
+        edtx_tale.setText(spot.tale)
+        edtx_description.setText(spot.description)
+        edtx_remark.setText(spot.remark)
+    }
 }

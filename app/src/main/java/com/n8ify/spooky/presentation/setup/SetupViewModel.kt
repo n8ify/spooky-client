@@ -78,19 +78,17 @@ class SetupViewModel(val spotRepository: SpotRepository, application: Applicatio
         }
     }
 
-    fun deleteSpot(index: Int) {
+    fun deleteSpot(spot: Spot) {
         isLoading.value = true
         launch {
-            spots.value?.let {
-                when (val result = spotRepository.deleteSpot(it[index])) {
-                    is UseCaseResult.Success -> spots.value = result.data
-                    is UseCaseResult.Failure -> {
-                        Log.e(TAG, "(On Delete) Unexpected Error!", result.e)
-                        exception.value = result.e
-                    }
+            when (val result = spotRepository.deleteSpot(spot)) {
+                is UseCaseResult.Success -> spots.value = result.data
+                is UseCaseResult.Failure -> {
+                    Log.e(TAG, "(On Delete) Unexpected Error!", result.e)
+                    exception.value = result.e
                 }
-                isLoading.value = false
             }
+            isLoading.value = false
         }
     }
 
