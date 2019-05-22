@@ -1,6 +1,7 @@
 package com.n8ify.spooky.presentation.setup
 
 import android.os.Bundle
+import androidx.lifecycle.Observer
 import com.n8ify.spooky.R
 import com.n8ify.spooky.presentation._base.AbstractBaseActivity
 import com.n8ify.spooky.presentation.setup.adapter.SetupPagerAdapter
@@ -19,6 +20,12 @@ class SetupActivity : AbstractBaseActivity() {
     }
 
     override fun initPostCreateObserver() {
+        spotViewModel.exception.observe(this, Observer {
+            showAlertDialog(it.message ?: it.toString())
+        })
+        spotViewModel.isLoading.observe(this, Observer { isLoading ->
+            if (isLoading) { showLoadingDialog() } else { hideLoadingDialog() }
+        })
         vp_setup.adapter = SetupPagerAdapter.getInstance(
             supportFragmentManager,
             RegisteredSpotFragment.getInstance(),

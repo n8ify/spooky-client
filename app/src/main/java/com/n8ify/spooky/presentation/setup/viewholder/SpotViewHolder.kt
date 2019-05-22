@@ -11,7 +11,7 @@ import kotlinx.android.synthetic.main.view_spot.view.*
 class SpotViewHolder(itemView: View) : AbstractBaseViewHolder(itemView) {
     fun bind(spot: Spot) {
         itemView.tv_spot_tale.text = spot.tale
-        itemView.tv_spot_description.text = "${spot.description} ${spot.remark ?: "(${spot.remark})"}"
+        itemView.tv_spot_description.text = "${spot.description} " + if(spot.remark != null ){" (${spot.remark})"} else {""}
         itemView.tv_spot_latlng.text = "${spot.latitude}, ${spot.longitude}"
         itemView.tv_spot_status.text = when (spot.status) {
             SPOT_STATUS_ACTIVE -> getString(R.string.status_active)

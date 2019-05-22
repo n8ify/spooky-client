@@ -41,6 +41,7 @@
     <string name="status_unactive">Unactive</string>
     <string name="status_visited">Visited</string>
     <string name="status_undefined">Undefined</string>
+    <string name="warning_message_tale_required">ต้องการเรื่องเล่า</string>
 
 
 </resources>

@@ -49,30 +49,78 @@ class SetupViewModel(val spotRepository: SpotRepository, application: Applicatio
             }
         }
     }
+    val exception = MutableLiveData<Throwable>()
+    val isLoading = MutableLiveData<Boolean>()
     val spots = MutableLiveData<List<Spot>>()
     val latLng = MutableLiveData<LatLng>()
 
     init {
-        if (ContextCompat.checkSelfPermission(application, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
+        if (ContextCompat.checkSelfPermission(
+                application,
+                Manifest.permission.ACCESS_FINE_LOCATION
+            ) == PackageManager.PERMISSION_GRANTED
+        ) {
             fusedLocationProviderClient.requestLocationUpdates(locationRequest, locationCallback, null)
         }
     }
 
     fun loadSpots() {
+        isLoading.value = true
         launch {
-            val result = withContext(Dispatchers.IO) { spotRepository.getAllSpots() }
-            when (result) {
+            when (val result = withContext(Dispatchers.IO) { spotRepository.getAllSpots() }) {
                 is UseCaseResult.Success -> spots.value = result.data
-                is UseCaseResult.Failure -> Log.e(TAG, "Unexpected Error!", result.e)
+                is UseCaseResult.Failure -> {
+                    Log.e(TAG, "(On Load) Unexpected Error!", result.e)
+                    exception.value = result.e
+                }
             }
+            isLoading.value = false
         }
     }
 
     fun deleteSpot(index: Int) {
-        val deleteSpot = spots.value?.let { it[index] }
-
+        isLoading.value = true
+        launch {
+            spots.value?.let {
+                when (val result = spotRepository.deleteSpot(it[index])) {
+                    is UseCaseResult.Success -> spots.value = result.data
+                    is UseCaseResult.Failure -> {
+                        Log.e(TAG, "(On Delete) Unexpected Error!", result.e)
+                        exception.value = result.e
+                    }
+                }
+                isLoading.value = false
+            }
+        }
     }
 
+    fun insertSpot(spot: Spot) {
+        isLoading.value = true
+        launch {
+            when (val result = spotRepository.insertSpot(spot)) {
+                is UseCaseResult.Success -> spots.value = result.data
+                is UseCaseResult.Failure -> {
+                    Log.e(TAG, "(On Insert) Unexpected Error!", result.e)
+                    exception.value = result.e
+                }
+            }
+            isLoading.value = false
+        }
+    }
+
+    fun updateSpot(spot: Spot) {
+        isLoading.value = true
+        launch {
+            when (val result = spotRepository.updateSpot(spot)) {
+                is UseCaseResult.Success -> spots.value = result.data
+                is UseCaseResult.Failure -> {
+                    Log.e(TAG, "(On Update) Unexpected Error!", result.e)
+                    exception.value = result.e
+                }
+            }
+            isLoading.value = false
+        }
+    }
 
     override fun onCleared() {
         super.onCleared()

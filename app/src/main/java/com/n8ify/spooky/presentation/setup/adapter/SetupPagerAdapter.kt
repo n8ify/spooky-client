@@ -23,4 +23,5 @@ class SetupPagerAdapter(fm: FragmentManager?) : FragmentPagerAdapter(fm) {
     override fun getCount(): Int {
         return fragments.size
     }
+
 }

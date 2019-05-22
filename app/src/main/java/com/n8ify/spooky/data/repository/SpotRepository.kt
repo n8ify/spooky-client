@@ -33,7 +33,7 @@ class SpotRepositoryImpl(private val spotAPI: SpotAPI) : SpotRepository {
 
     override suspend fun insertSpot(spot: Spot): UseCaseResult<List<Spot>> {
         return try {
-            val data = spotAPI.updateAsync(spot).await()
+            val data = spotAPI.insertAsync(spot).await()
             UseCaseResult.Success(data.data)
         } catch (e : Exception) {
             UseCaseResult.Failure(e)
@@ -42,7 +42,7 @@ class SpotRepositoryImpl(private val spotAPI: SpotAPI) : SpotRepository {
 
     override suspend fun updateSpot(spot: Spot): UseCaseResult<List<Spot>> {
         return try {
-            val data = spotAPI.insertAsync(spot).await()
+            val data = spotAPI.updateAsync(spot).await()
             UseCaseResult.Success(data.data)
         } catch (e : Exception) {
             UseCaseResult.Failure(e)

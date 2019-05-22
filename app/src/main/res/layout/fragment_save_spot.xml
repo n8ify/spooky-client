@@ -25,6 +25,10 @@
         <EditText android:id="@+id/edtx_remark" android:hint="@string/setting_remark"
                   android:layout_width="match_parent" android:layout_height="wrap_content"/>
     </com.google.android.material.textfield.TextInputLayout>
+    <TextView android:id="@+id/tv_latlng" android:layout_width="match_parent" android:layout_height="wrap_content"
+              android:textAlignment="center"
+              android:text="$LanLng"
+              android:textStyle="italic"/>
     <Button android:id="@+id/btn_pin" android:layout_width="match_parent" android:layout_height="wrap_content"
             android:text="@string/setting_pin"
             android:layout_marginTop="16dp"/>

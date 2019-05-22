@@ -22,8 +22,13 @@ android {
             buildConfigField("String", spookyBaseUrl, "\"https://radiant-shore-70316.herokuapp.com/\"")
         }
 
-        dev.initWith(buildTypes.debug)
-        dev {
+        local.initWith(buildTypes.debug)
+        local {
+            buildConfigField("String", spookyBaseUrl, "\"http://192.168.43.62:8080/\"")
+        }
+
+        prod.initWith(buildTypes.debug)
+        prod {
             buildConfigField("String", spookyBaseUrl, "\"https://radiant-shore-70316.herokuapp.com/\"")
         }
 
