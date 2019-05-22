@@ -9,7 +9,6 @@ import com.n8ify.spooky.presentation.main.MainViewModel
 import com.n8ify.spooky.presentation.setup.SetupViewModel
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
-import org.koin.android.ext.koin.androidContext
 import org.koin.android.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 import retrofit2.Retrofit
@@ -18,7 +17,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 val dataModule = module {
     single { provideRetrofit().create(SpotAPI::class.java) }
     factory<SpotRepository> { SpotRepositoryImpl(spotAPI = get()) }
-    viewModel { MainViewModel(spotRepository = get()) }
+    viewModel { MainViewModel(spotRepository = get(), application = get()) }
     viewModel { SetupViewModel(spotRepository = get(), application = get()) }
 }
 

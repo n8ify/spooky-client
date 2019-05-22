@@ -5,7 +5,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import com.jakewharton.rxbinding2.view.RxView
 import com.n8ify.spooky.R
@@ -15,7 +14,6 @@ import com.n8ify.spooky.presentation._base.AbstractBaseFragment
 import com.n8ify.spooky.presentation.setup.SetupActivity
 import io.reactivex.rxkotlin.subscribeBy
 import kotlinx.android.synthetic.main.fragment_save_spot.*
-import kotlinx.android.synthetic.main.view_spot.*
 
 class SaveSpotFragment : AbstractBaseFragment() {
 

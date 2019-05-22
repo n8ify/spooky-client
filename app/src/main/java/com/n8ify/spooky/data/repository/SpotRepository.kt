@@ -3,7 +3,6 @@ package com.n8ify.spooky.data.repository
 import com.n8ify.spooky.data.api.SpotAPI
 import com.n8ify.spooky.data.entity.UseCaseResult
 import com.n8ify.spooky.model.spot.Spot
-import java.lang.Exception
 
 interface SpotRepository {
     suspend fun getAllSpots(): UseCaseResult<List<Spot>>

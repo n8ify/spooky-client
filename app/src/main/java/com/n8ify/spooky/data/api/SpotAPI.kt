@@ -4,7 +4,6 @@ import com.n8ify.spooky.model.spot.Spot
 import com.n8ify.spooky.model.spot.SpotResponse
 import kotlinx.coroutines.Deferred
 import retrofit2.http.Body
-import retrofit2.http.GET
 import retrofit2.http.POST
 
 interface SpotAPI {

@@ -8,7 +8,6 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.n8ify.spooky.R
-import com.n8ify.spooky.model.spot.Spot
 import com.n8ify.spooky.presentation.setup.SetupActivity
 import com.n8ify.spooky.presentation.setup.adapter.RegisteredSpotAdapter
 import kotlinx.android.synthetic.main.fragment_registered.view.*

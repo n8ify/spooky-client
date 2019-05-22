@@ -5,7 +5,9 @@ import android.view.View
 import android.widget.ArrayAdapter
 import com.jakewharton.rxbinding2.view.RxView
 import com.n8ify.spooky.R
-import com.n8ify.spooky.constant.*
+import com.n8ify.spooky.constant.SPOT_STATUS_ACTIVE
+import com.n8ify.spooky.constant.SPOT_STATUS_UNACTIVE
+import com.n8ify.spooky.constant.SPOT_STATUS_VISITED
 import com.n8ify.spooky.model.spot.Spot
 import com.n8ify.spooky.presentation._base.AbstractBaseViewHolder
 import com.n8ify.spooky.presentation._event.OnSelectSpotOption

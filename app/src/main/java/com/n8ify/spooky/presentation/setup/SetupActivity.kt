@@ -3,6 +3,7 @@ package com.n8ify.spooky.presentation.setup
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import android.widget.Toast
 import androidx.lifecycle.Observer
 import com.n8ify.spooky.R
 import com.n8ify.spooky.model.spot.Spot
@@ -13,6 +14,7 @@ import com.n8ify.spooky.presentation.setup.fragment.RegisteredSpotFragment
 import com.n8ify.spooky.presentation.setup.fragment.SaveSpotFragment
 import kotlinx.android.synthetic.main.activity_setup.*
 import org.koin.android.viewmodel.ext.android.viewModel
+import java.net.SocketTimeoutException
 
 class SetupActivity : AbstractBaseActivity(), OnSelectSpotOption {
 
@@ -28,7 +30,11 @@ class SetupActivity : AbstractBaseActivity(), OnSelectSpotOption {
 
     override fun initPostCreateObserver() {
         spotViewModel.exception.observe(this, Observer {
-            showAlertDialog(it.message ?: it.toString())
+            when (it) {
+                is SocketTimeoutException -> {
+                    Toast.makeText(this@SetupActivity, it.localizedMessage, Toast.LENGTH_LONG).show()
+                }
+            }
         })
         spotViewModel.isLoading.observe(this, Observer { isLoading ->
             if (isLoading) {

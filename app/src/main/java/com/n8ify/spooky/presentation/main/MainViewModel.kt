@@ -1,43 +1,47 @@
 package com.n8ify.spooky.presentation.main
 
-import android.util.Log
-import androidx.lifecycle.AndroidViewModel
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
-import com.n8ify.spooky.data.entity.UseCaseResult
+import android.app.Application
+import android.location.Location
+import android.location.LocationManager
+import com.n8ify.spooky.data.model.DetailedSpot
 import com.n8ify.spooky.data.repository.SpotRepository
 import com.n8ify.spooky.model.spot.Spot
-import kotlinx.coroutines.*
-import kotlin.coroutines.CoroutineContext
+import com.n8ify.spooky.presentation._base.AbstractSpotViewModel
+import kotlinx.coroutines.CoroutineScope
 
-class MainViewModel(val spotRepository: SpotRepository) : ViewModel(), CoroutineScope {
+class MainViewModel(spotRepository: SpotRepository, application: Application) :
+    AbstractSpotViewModel(spotRepository, application), CoroutineScope {
 
-    val TAG = MainViewModel::class.java.simpleName
+    init {
+        TAG = MainViewModel::class.java.simpleName
+    }
 
-    // Coroutine's background job
-    private val job = Job()
-    // Define default thread for Coroutine as Main and add job
-    override val coroutineContext: CoroutineContext =  Dispatchers.Main.plus(job)
+    fun getNearestSpot(): DetailedSpot? {
+        var nearestSpot: Spot? = null
+        var nearestDistance = -1F
+        spots.value?.forEach { spot ->
+            latLng.value?.let {
+                val spotLocation = Location(LocationManager.NETWORK_PROVIDER).apply {
+                    latitude = spot.latitude.toDouble()
+                    longitude = spot.longitude.toDouble()
+                }
 
-    val spots = MutableLiveData<List<Spot>>().apply { this.value = mutableListOf() }
-
-    fun loadSpots(){
-        launch {
-            val result = withContext(Dispatchers.IO){ spotRepository.getAllSpots() }
-            val any = when (result) {
-                is UseCaseResult.Success -> result.data.forEach { Log.d(TAG, it.toString()) }
-                is UseCaseResult.Failure -> Log.e(TAG, "Unexpected Error!", result.e)
+                val currentLocation = Location(LocationManager.NETWORK_PROVIDER).apply {
+                    latitude = it.latitude.toDouble()
+                    longitude = it.longitude.toDouble()
+                }
+                if (nearestSpot != null) {
+                    val measuredDistance = currentLocation.distanceTo(spotLocation)
+                    if(measuredDistance < nearestDistance || nearestDistance == -1F){
+                        nearestSpot = spot
+                        nearestDistance = measuredDistance
+                    }
+                } else {
+                    nearestSpot = spot
+                }
             }
         }
+        return DetailedSpot(nearestSpot, nearestDistance)
     }
 
-    fun deleteSpot(index : Int){
-        val deleteSpot = spots.value!![index]
-
-    }
-
-    override fun onCleared() {
-        super.onCleared()
-        job.cancel()
-    }
 }
