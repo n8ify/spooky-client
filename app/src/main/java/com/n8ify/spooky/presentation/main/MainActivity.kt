@@ -1,5 +1,6 @@
 package com.n8ify.spooky.presentation.main
 
+import android.content.DialogInterface
 import android.os.Bundle
 import android.os.PersistableBundle
 import android.widget.Toast
@@ -15,14 +16,14 @@ import java.net.SocketTimeoutException
 
 class MainActivity : AbstractBaseActivity() {
 
-    private val mainViewModel : MainViewModel by viewModel()
+    private val mainViewModel: MainViewModel by viewModel()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
     }
 
-    override fun initPostCreateView(){}
+    override fun initPostCreateView() {}
 
     override fun initPostCreateListener() {
         RxView.clicks(tv_setting).subscribeBy { startActivity(SetupActivity::class.java) }
@@ -33,6 +34,12 @@ class MainActivity : AbstractBaseActivity() {
             when (it) {
                 is SocketTimeoutException -> {
                     Toast.makeText(this@MainActivity, it.localizedMessage, Toast.LENGTH_LONG).show()
+                    showAlertDialog(
+                        it.localizedMessage,
+                        posButtonTitle = R.string.common_retry,
+                        posDialog = DialogInterface.OnClickListener { dialog, which ->
+                            mainViewModel.loadSpots() // Action : Retry
+                        })
                 }
             }
         })
@@ -48,7 +55,8 @@ class MainActivity : AbstractBaseActivity() {
         })
         mainViewModel.latLng.observe(this@MainActivity, Observer {
             mainViewModel.getNearestSpot()?.let {
-                Toast.makeText(this@MainActivity, "Nearest = ${it.spot?.tale} : ${it.distance} ", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this@MainActivity, "Nearest = ${it.spot?.tale} : ${it.distance} ", Toast.LENGTH_SHORT)
+                    .show()
             }
         })
     }

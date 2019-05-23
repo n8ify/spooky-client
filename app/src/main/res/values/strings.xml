@@ -42,6 +42,9 @@
     <string name="status_visited">Visited</string>
     <string name="status_undefined">Undefined</string>
     <string name="warning_message_tale_required">ต้องการเรื่องเล่า</string>
+    <string name="common_close">ปิด</string>
+    <string name="common_retry">ลองอีกครั้ง</string>
+    <string name="common_loading">กำลังโหลด...</string>
 
     <string-array name="spot_option">
         <item>แสดงบนแผนที่ Google Map</item>
