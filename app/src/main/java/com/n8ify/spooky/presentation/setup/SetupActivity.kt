@@ -1,5 +1,6 @@
 package com.n8ify.spooky.presentation.setup
 
+import android.content.DialogInterface
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
@@ -20,8 +21,8 @@ class SetupActivity : AbstractBaseActivity(), OnSelectSpotOption {
 
     val spotViewModel: SetupViewModel by viewModel()
 
-    val registeredSpotFragment by lazy { RegisteredSpotFragment.getInstance() }
-    val saveSpotFragment by lazy { SaveSpotFragment.getInstance(null) }
+    private val registeredSpotFragment by lazy { RegisteredSpotFragment.getInstance() }
+    private val saveSpotFragment by lazy { SaveSpotFragment.getInstance(null) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,10 +30,16 @@ class SetupActivity : AbstractBaseActivity(), OnSelectSpotOption {
     }
 
     override fun initPostCreateObserver() {
-        spotViewModel.exception.observe(this, Observer {
+        spotViewModel.exception.observe(this@SetupActivity, Observer {
             when (it) {
                 is SocketTimeoutException -> {
-                    Toast.makeText(this@SetupActivity, it.localizedMessage, Toast.LENGTH_LONG).show()
+                    Toast.makeText(this@SetupActivity, getString(R.string.ghost_retry_connect_sentence), Toast.LENGTH_LONG).show()
+                    showAlertDialog(
+                        it.localizedMessage,
+                        posButtonTitle = R.string.common_retry,
+                        posDialog = DialogInterface.OnClickListener { dialog, which ->
+                            spotViewModel.loadSpots() // Action : Retry
+                        })
                 }
             }
         })

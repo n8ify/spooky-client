@@ -33,7 +33,7 @@ class MainActivity : AbstractBaseActivity() {
         mainViewModel.exception.observe(this@MainActivity, Observer {
             when (it) {
                 is SocketTimeoutException -> {
-                    Toast.makeText(this@MainActivity, it.localizedMessage, Toast.LENGTH_LONG).show()
+                    Toast.makeText(this@MainActivity, getString(R.string.ghost_retry_connect_sentence), Toast.LENGTH_LONG).show()
                     showAlertDialog(
                         it.localizedMessage,
                         posButtonTitle = R.string.common_retry,
