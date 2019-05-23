@@ -35,7 +35,7 @@ class MainActivity : AbstractBaseActivity() {
                 is SocketTimeoutException -> {
                     Toast.makeText(this@MainActivity, getString(R.string.ghost_retry_connect_sentence), Toast.LENGTH_LONG).show()
                     showAlertDialog(
-                        it.localizedMessage,
+                        getString(R.string.ghost_retry_connect_sentence),
                         posButtonTitle = R.string.common_retry,
                         posDialog = DialogInterface.OnClickListener { dialog, which ->
                             mainViewModel.loadSpots() // Action : Retry
@@ -55,8 +55,11 @@ class MainActivity : AbstractBaseActivity() {
         })
         mainViewModel.latLng.observe(this@MainActivity, Observer {
             mainViewModel.getNearestSpot()?.let {
-                Toast.makeText(this@MainActivity, "Nearest = ${it.spot?.tale} : ${it.distance} ", Toast.LENGTH_SHORT)
-                    .show()
+                if(it.spot != null){
+                    tv_tale.text = it.spot.tale
+                    tv_description.text = it.spot.description
+                    tv_distance.text = "${it.distance} ${getString(R.string.common_meter)}"
+                }
             }
         })
     }

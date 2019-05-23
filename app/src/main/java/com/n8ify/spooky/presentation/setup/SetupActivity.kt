@@ -33,7 +33,11 @@ class SetupActivity : AbstractBaseActivity(), OnSelectSpotOption {
         spotViewModel.exception.observe(this@SetupActivity, Observer {
             when (it) {
                 is SocketTimeoutException -> {
-                    Toast.makeText(this@SetupActivity, getString(R.string.ghost_retry_connect_sentence), Toast.LENGTH_LONG).show()
+                    Toast.makeText(
+                        this@SetupActivity,
+                        getString(R.string.ghost_retry_connect_sentence),
+                        Toast.LENGTH_LONG
+                    ).show()
                     showAlertDialog(
                         it.localizedMessage,
                         posButtonTitle = R.string.common_retry,
@@ -57,16 +61,16 @@ class SetupActivity : AbstractBaseActivity(), OnSelectSpotOption {
         )
     }
 
-    override fun onViewOnGoogleMapClick(spot : Spot) {
+    override fun onViewOnGoogleMapClick(spot: Spot) {
         val geoUri = Uri.parse("geo:${spot.latitude},${spot.longitude}")
         val googleMapIntent = Intent(Intent.ACTION_VIEW, geoUri)
         googleMapIntent.setPackage("com.google.android.apps.maps")
-        if(googleMapIntent.resolveActivity(packageManager) != null){
+        if (googleMapIntent.resolveActivity(packageManager) != null) {
             startActivity(googleMapIntent)
         }
     }
 
-    override fun onEditClick(spot : Spot) {
+    override fun onEditClick(spot: Spot) {
         vp_setup.currentItem = 1
         saveSpotFragment.editSpot(spot)
     }
@@ -76,8 +80,8 @@ class SetupActivity : AbstractBaseActivity(), OnSelectSpotOption {
     }
 
     override fun onBackPressed() {
-        if(vp_setup.currentItem == 0){
-            finish()
+        if (vp_setup.currentItem == 0) {
+            super.onBackPressed()
         } else {
             vp_setup.currentItem = 0
         }

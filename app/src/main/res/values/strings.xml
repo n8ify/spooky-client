@@ -45,6 +45,7 @@
     <string name="common_close">ปิด</string>
     <string name="common_retry">ลองอีกครั้ง</string>
     <string name="common_loading">กำลังโหลด...</string>
+    <string name="common_meter">เมตร</string>
 
     <string-array name="spot_option">
         <item>แสดงบนแผนที่ Google Map</item>
