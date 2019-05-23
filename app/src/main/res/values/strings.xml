@@ -46,6 +46,7 @@
     <string name="common_retry">ลองอีกครั้ง</string>
     <string name="common_loading">กำลังโหลด...</string>
     <string name="common_meter">เมตร</string>
+    <string name="common_visited">เยือนแล้ว</string>
 
     <string-array name="spot_option">
         <item>แสดงบนแผนที่ Google Map</item>

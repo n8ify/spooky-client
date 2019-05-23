@@ -27,13 +27,18 @@ class MainActivity : AbstractBaseActivity() {
 
     override fun initPostCreateListener() {
         RxView.clicks(tv_setting).subscribeBy { startActivity(SetupActivity::class.java) }
+        RxView.longClicks(btn_visited).subscribeBy {
+            val nearestSpot = mainViewModel.getNearestSpot()
+            nearestSpot?.spot?.let {
+                mainViewModel.deleteSpot(it)
+            }
+        }
     }
 
     override fun initPostCreateObserver() {
         mainViewModel.exception.observe(this@MainActivity, Observer {
             when (it) {
                 is SocketTimeoutException -> {
-                    Toast.makeText(this@MainActivity, getString(R.string.ghost_retry_connect_sentence), Toast.LENGTH_LONG).show()
                     showAlertDialog(
                         getString(R.string.ghost_retry_connect_sentence),
                         posButtonTitle = R.string.common_retry,
@@ -51,11 +56,12 @@ class MainActivity : AbstractBaseActivity() {
             }
         })
         mainViewModel.spots.observe(this@MainActivity, Observer {
-            Toast.makeText(this@MainActivity, getString(R.string.ghost_ready_sentence), Toast.LENGTH_LONG).show()
+            // TODO : If Spot Information is Changed.
+            rb_distance_beat.startRippleAnimation()
         })
         mainViewModel.latLng.observe(this@MainActivity, Observer {
             mainViewModel.getNearestSpot()?.let {
-                if(it.spot != null){
+                if (it.spot != null) {
                     tv_tale.text = it.spot.tale
                     tv_description.text = it.spot.description
                     tv_distance.text = "${it.distance} ${getString(R.string.common_meter)}"

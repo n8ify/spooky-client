@@ -41,6 +41,7 @@ class MainViewModel(spotRepository: SpotRepository, application: Application) :
                 }
             }
         }
+        nearestSpot?.createTimestamp = null
         return DetailedSpot(nearestSpot, nearestDistance)
     }
 
