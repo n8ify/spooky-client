@@ -16,7 +16,7 @@ abstract class AbstractBaseActivity : AppCompatActivity() {
 
     private val progressDialog: ProgressDialog by lazy {
         ProgressDialog(this@AbstractBaseActivity).apply {
-            setMessage("Loading...")
+            setMessage(getString(R.string.common_loading))
             setCancelable(false)
         }
     }
@@ -33,6 +33,7 @@ abstract class AbstractBaseActivity : AppCompatActivity() {
     open fun initPostCreateListener() {}
     open fun initPostCreateObserver() {}
     open fun initPostLoadAsync() {}
+    fun initUncaughtExceptionHandler() {}
 
     fun startActivity(activityClass: Class<out AppCompatActivity>) {
         startActivity(Intent(this, activityClass))

@@ -57,7 +57,6 @@ class MainActivity : AbstractBaseActivity() {
             }
         })
         mainViewModel.spots.observe(this@MainActivity, Observer {
-            // TODO : If Spot Information is Changed.
             if (it.isEmpty()) {
                 tv_tale.text = "-"
                 tv_description.text = "-"
@@ -83,24 +82,26 @@ class MainActivity : AbstractBaseActivity() {
             if (it.spot != null) {
                 tv_tale.text = it.spot.tale
                 tv_description.text = it.spot.description
-                tv_distance.text = "${it.distance} ${getString(R.string.common_meter)}"
-                when {
+                val distanceMessage = when {
                     it.distance > CLOSE_METER_DISTANCE_LEVEL_5 -> {
-                        Toast.makeText(this@MainActivity, getString(R.string.ghost_response_no_spot), Toast.LENGTH_LONG)
+                        getString(R.string.ghost_response_no_spot)
                     }
                     it.distance > CLOSE_METER_DISTANCE_LEVEL_4 -> {
-                        Toast.makeText(this@MainActivity, getString(R.string.ghost_response_become_closer), Toast.LENGTH_LONG)
+                        getString(R.string.ghost_response_become_closer)
                     }
                     it.distance > CLOSE_METER_DISTANCE_LEVEL_3 -> {
-                        Toast.makeText(this@MainActivity, getString(R.string.ghost_response_just_close_to_it), Toast.LENGTH_LONG)
+                        getString(R.string.ghost_response_just_close_to_it)
                     }
                     it.distance > CLOSE_METER_DISTANCE_LEVEL_2 -> {
-                        Toast.makeText(this@MainActivity, getString(R.string.ghost_response_must_be_here), Toast.LENGTH_LONG)
+                        getString(R.string.ghost_response_must_be_here)
                     }
                     it.distance > CLOSE_METER_DISTANCE_LEVEL_1 -> {
-                        Toast.makeText(this@MainActivity, getString(R.string.ghost_response_exactly_around_here), Toast.LENGTH_LONG)
+                        getString(R.string.ghost_response_exactly_around_here)
                     }
+                    else -> getString(R.string.ghost_response_no_spot)
                 }
+                tv_distance.text = "$distanceMessage : ${it.distance} ${getString(R.string.common_meter)}"
+
             }
         }
     }
