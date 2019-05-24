@@ -30,14 +30,15 @@ class MainViewModel(spotRepository: SpotRepository, application: Application) :
                     latitude = it.latitude.toDouble()
                     longitude = it.longitude.toDouble()
                 }
+                val measuredDistance = currentLocation.distanceTo(spotLocation)
                 if (nearestSpot != null) {
-                    val measuredDistance = currentLocation.distanceTo(spotLocation)
                     if(measuredDistance < nearestDistance || nearestDistance == -1F){
                         nearestSpot = spot
                         nearestDistance = measuredDistance
                     }
                 } else {
                     nearestSpot = spot
+                    nearestDistance = measuredDistance
                 }
             }
         }

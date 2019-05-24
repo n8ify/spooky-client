@@ -57,20 +57,31 @@ class MainActivity : AbstractBaseActivity() {
         })
         mainViewModel.spots.observe(this@MainActivity, Observer {
             // TODO : If Spot Information is Changed.
-            rb_distance_beat.startRippleAnimation()
+            if(it.isEmpty()){
+                tv_tale.text = "-"
+                tv_description.text = "-"
+                tv_distance.text = "-"
+            } else {
+                locateNearestSpot()
+                rb_distance_beat.startRippleAnimation()
+            }
         })
         mainViewModel.latLng.observe(this@MainActivity, Observer {
-            mainViewModel.getNearestSpot()?.let {
-                if (it.spot != null) {
-                    tv_tale.text = it.spot.tale
-                    tv_description.text = it.spot.description
-                    tv_distance.text = "${it.distance} ${getString(R.string.common_meter)}"
-                }
-            }
+            locateNearestSpot()
         })
     }
 
     override fun initPostLoadAsync() {
         mainViewModel.loadSpots()
+    }
+
+    fun locateNearestSpot(){
+        mainViewModel.getNearestSpot()?.let {
+            if (it.spot != null) {
+                tv_tale.text = it.spot.tale
+                tv_description.text = it.spot.description
+                tv_distance.text = "${it.distance} ${getString(R.string.common_meter)}"
+            }
+        }
     }
 }
