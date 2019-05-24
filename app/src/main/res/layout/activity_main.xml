@@ -65,7 +65,24 @@
             android:enabled="false"/>
 
     <com.skyfishjy.library.RippleBackground
-            android:id="@+id/rb_distance_beat"
+            android:id="@+id/rb_distance_beat_lv1"
+            android:layout_width="300dp"
+            android:layout_height="300dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btn_visited"
+            app:rb_color="#2196F3"
+            app:rb_radius="32dp"
+            app:rb_rippleAmount="6"
+            app:rb_duration="2800"
+            android:visibility="gone"
+            app:rb_scale="3" app:layout_constraintHorizontal_bias="0.495" android:layout_marginTop="12dp">
+        <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                   android:src="@mipmap/ic_launcher_round" android:layout_centerHorizontal="true"
+                   android:layout_centerVertical="true"/>
+    </com.skyfishjy.library.RippleBackground>
+    <com.skyfishjy.library.RippleBackground
+            android:id="@+id/rb_distance_beat_lv2"
             android:layout_width="300dp"
             android:layout_height="300dp"
             app:layout_constraintStart_toStartOf="parent"
@@ -74,6 +91,57 @@
             app:rb_color="#0099CC"
             app:rb_radius="32dp"
             app:rb_rippleAmount="4"
+            app:rb_duration="3100"
+            android:visibility="gone"
+            app:rb_scale="3" app:layout_constraintHorizontal_bias="0.495" android:layout_marginTop="12dp">
+        <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                   android:src="@mipmap/ic_launcher_round" android:layout_centerHorizontal="true"
+                   android:layout_centerVertical="true"/>
+    </com.skyfishjy.library.RippleBackground>
+    <com.skyfishjy.library.RippleBackground
+            android:id="@+id/rb_distance_beat_lv3"
+            android:layout_width="300dp"
+            android:layout_height="300dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btn_visited"
+            app:rb_color="#0099CC"
+            app:rb_radius="32dp"
+            app:rb_rippleAmount="3"
+            app:rb_duration="3400"
+            android:visibility="gone"
+            app:rb_scale="3" app:layout_constraintHorizontal_bias="0.495" android:layout_marginTop="12dp">
+        <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                   android:src="@mipmap/ic_launcher_round" android:layout_centerHorizontal="true"
+                   android:layout_centerVertical="true"/>
+    </com.skyfishjy.library.RippleBackground>
+    <com.skyfishjy.library.RippleBackground
+            android:id="@+id/rb_distance_beat_lv4"
+            android:layout_width="300dp"
+            android:layout_height="300dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btn_visited"
+            app:rb_color="#0099CC"
+            app:rb_radius="32dp"
+            app:rb_rippleAmount="2"
+            app:rb_duration="3700"
+            android:visibility="gone"
+            app:rb_scale="3" app:layout_constraintHorizontal_bias="0.495" android:layout_marginTop="12dp">
+        <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                   android:src="@mipmap/ic_launcher_round" android:layout_centerHorizontal="true"
+                   android:layout_centerVertical="true"/>
+    </com.skyfishjy.library.RippleBackground>
+    <com.skyfishjy.library.RippleBackground
+            android:id="@+id/rb_distance_beat_lv5"
+            android:layout_width="300dp"
+            android:layout_height="300dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btn_visited"
+            app:rb_color="#0099CC"
+            app:rb_radius="32dp"
+            app:rb_rippleAmount="1"
             app:rb_duration="3000"
             app:rb_scale="3" app:layout_constraintHorizontal_bias="0.495" android:layout_marginTop="12dp">
         <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content"
