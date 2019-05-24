@@ -61,9 +61,11 @@ class MainActivity : AbstractBaseActivity() {
                 tv_tale.text = "-"
                 tv_description.text = "-"
                 tv_distance.text = "-"
+                btn_visited.isEnabled = false
             } else {
                 locateNearestSpot()
                 rb_distance_beat.startRippleAnimation()
+                btn_visited.isEnabled = true
             }
         })
         mainViewModel.latLng.observe(this@MainActivity, Observer {
