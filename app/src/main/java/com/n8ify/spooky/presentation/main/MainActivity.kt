@@ -86,19 +86,19 @@ class MainActivity : AbstractBaseActivity() {
                 tv_distance.text = "${it.distance} ${getString(R.string.common_meter)}"
                 when {
                     it.distance > CLOSE_METER_DISTANCE_LEVEL_5 -> {
-                        tv_message.text = getString(R.string.ghost_response_no_spot)
+                        Toast.makeText(this@MainActivity, getString(R.string.ghost_response_no_spot), Toast.LENGTH_LONG)
                     }
                     it.distance > CLOSE_METER_DISTANCE_LEVEL_4 -> {
-                        tv_message.text = getString(R.string.ghost_response_become_closer)
+                        Toast.makeText(this@MainActivity, getString(R.string.ghost_response_become_closer), Toast.LENGTH_LONG)
                     }
                     it.distance > CLOSE_METER_DISTANCE_LEVEL_3 -> {
-                        tv_message.text = getString(R.string.ghost_response_just_close_to_it)
+                        Toast.makeText(this@MainActivity, getString(R.string.ghost_response_just_close_to_it), Toast.LENGTH_LONG)
                     }
                     it.distance > CLOSE_METER_DISTANCE_LEVEL_2 -> {
-                        tv_message.text = getString(R.string.ghost_response_must_be_here)
+                        Toast.makeText(this@MainActivity, getString(R.string.ghost_response_must_be_here), Toast.LENGTH_LONG)
                     }
                     it.distance > CLOSE_METER_DISTANCE_LEVEL_1 -> {
-                        tv_message.text = getString(R.string.ghost_response_exactly_around_here)
+                        Toast.makeText(this@MainActivity, getString(R.string.ghost_response_exactly_around_here), Toast.LENGTH_LONG)
                     }
                 }
             }
