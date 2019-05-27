@@ -101,7 +101,7 @@ class MainActivity : AbstractBaseActivity() {
                         activateDistanceRippleBeat(CLOSE_METER_DISTANCE_LEVEL_2)
                         getString(R.string.ghost_response_must_be_here)
                     }
-                    it.distance > CLOSE_METER_DISTANCE_LEVEL_1 -> {
+                    it.distance > CLOSE_METER_DISTANCE_LEVEL_1 || it.distance < CLOSE_METER_DISTANCE_LEVEL_1 -> {
                         activateDistanceRippleBeat(CLOSE_METER_DISTANCE_LEVEL_1)
                         getString(R.string.ghost_response_exactly_around_here)
                     }

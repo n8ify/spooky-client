@@ -1,18 +1,6 @@
 <resources>
     <string name="app_name">Spooky</string>
-    <string name="ghost_ready_sentence">ฉันพร้อมแล้ว! แตะที่ฉันเมื่อเธอพร้อม...</string>
     <string name="ghost_retry_connect_sentence">น่าเศร้า เซิฟเวอร์ไม่ตอบสนองฉันกลับมา... ฉันจะลองอีกครั้ง</string>
-    <string name="ghost_interact_1">ฉันรู้งานนะ!</string>
-    <string name="ghost_interact_2">ตั้งใจหาหน่อยสิ!</string>
-    <string name="ghost_interact_3">ฉันทำงานหนักมาก รู้เปล่า?</string>
-    <string name="ghost_interact_4">เห้!</string>
-    <string name="ghost_interact_5">อย่าแตะมาก มันไร้ประโยชน์</string>
-    <string name="ghost_interact_6">อ่อนหัด! อ่อนหัด! อ่อนหัด! อ่อนหัด! อ่อนหัด! อ่อนหัด!</string>
-    <string name="ghost_interact_7">แตะไปก็ไร้ค่า เด็กน้อย</string>
-    <string name="ghost_interact_8">พอได้แล้ว...</string>
-    <string name="ghost_interact_9">จ่ะ! จ่ะ! จ่ะ!</string>
-    <string name="ghost_interact_10">ถ้าชอบใจก็ทำต่อไป...</string>
-    <string name="ghost_response_lets_go">ไปกันเลย!</string>
     <string name="ghost_response_give_me_a_time">ขอเวลาแปปนึงนะ...</string>
     <string name="ghost_response_too_far_from_here">ยังห่างไกลจากตรงนี้อยู่...</string>
     <string name="ghost_response_become_closer">ใกล้ขึ้นมาหน่อย</string>

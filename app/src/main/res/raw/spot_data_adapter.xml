@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<jdbcDataAdapter class="net.sf.jasperreports.data.jdbc.JdbcDataAdapterImpl"><name>SpotDataAdapter</name><driver>com.mysql.jdbc.Driver</driver><username>eKfdYZ2kEA</username><password>Ef2nxciLD5</password><savePassword>true</savePassword><url>jdbc:mysql://remotemysql.com:3306/eKfdYZ2kEA?useUnicode=true&amp;characterEncoding=UTF-8</url><database></database><serverAddress></serverAddress><classpath>/Users/nattawutpichaiwattnphon/Resource/jar/mysql-connector-java-8.0.13.jar</classpath></jdbcDataAdapter>
