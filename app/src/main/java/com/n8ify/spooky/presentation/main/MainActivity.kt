@@ -1,8 +1,10 @@
 package com.n8ify.spooky.presentation.main
 
+import android.content.Context
 import android.content.DialogInterface
 import android.os.Bundle
 import android.os.PersistableBundle
+import android.os.Vibrator
 import android.util.AttributeSet
 import android.view.View
 import android.widget.Toast
@@ -117,8 +119,12 @@ class MainActivity : AbstractBaseActivity() {
     }
 
     fun activateDistanceRippleBeat(level: Int) {
+        val vibrator = getSystemService(Context.VIBRATOR_SERVICE) as Vibrator
         when (level) {
             CLOSE_METER_DISTANCE_LEVEL_1 -> {
+
+                vibrator.vibrate(VIBRATE_MILLIS_LEVEL_5)
+
                 rb_distance_beat_lv1.startRippleAnimation()
                 rb_distance_beat_lv1.visibility = View.VISIBLE
                 rb_distance_beat_lv2.stopRippleAnimation()
@@ -131,6 +137,9 @@ class MainActivity : AbstractBaseActivity() {
                 rb_distance_beat_lv5.visibility = View.GONE
             }
             CLOSE_METER_DISTANCE_LEVEL_2 -> {
+
+                vibrator.vibrate(VIBRATE_MILLIS_LEVEL_4)
+
                 rb_distance_beat_lv1.stopRippleAnimation()
                 rb_distance_beat_lv1.visibility = View.GONE
                 rb_distance_beat_lv2.startRippleAnimation()
@@ -143,6 +152,9 @@ class MainActivity : AbstractBaseActivity() {
                 rb_distance_beat_lv5.visibility = View.GONE
             }
             CLOSE_METER_DISTANCE_LEVEL_3 -> {
+
+                vibrator.vibrate(VIBRATE_MILLIS_LEVEL_3)
+
                 rb_distance_beat_lv1.stopRippleAnimation()
                 rb_distance_beat_lv1.visibility = View.GONE
                 rb_distance_beat_lv2.stopRippleAnimation()
@@ -155,6 +167,9 @@ class MainActivity : AbstractBaseActivity() {
                 rb_distance_beat_lv5.visibility = View.GONE
             }
             CLOSE_METER_DISTANCE_LEVEL_4 -> {
+
+                vibrator.vibrate(VIBRATE_MILLIS_LEVEL_2)
+
                 rb_distance_beat_lv1.stopRippleAnimation()
                 rb_distance_beat_lv1.visibility = View.GONE
                 rb_distance_beat_lv2.stopRippleAnimation()
@@ -167,6 +182,9 @@ class MainActivity : AbstractBaseActivity() {
                 rb_distance_beat_lv5.visibility = View.GONE
             }
             CLOSE_METER_DISTANCE_LEVEL_5 -> {
+
+                vibrator.vibrate(VIBRATE_MILLIS_LEVEL_1)
+
                 rb_distance_beat_lv1.stopRippleAnimation()
                 rb_distance_beat_lv1.visibility = View.GONE
                 rb_distance_beat_lv2.stopRippleAnimation()
