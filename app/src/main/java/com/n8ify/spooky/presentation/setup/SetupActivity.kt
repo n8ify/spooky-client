@@ -76,6 +76,7 @@ class SetupActivity : AbstractBaseActivity(), OnSelectSpotOption {
     }
 
     override fun onDeleteClick(spot: Spot) {
+        spot.createTimestamp = null // Note : Set-null on current spot's timestamp.
         spotViewModel.deleteSpot(spot)
     }
 
